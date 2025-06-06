@@ -1,277 +1,97 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nguyễn Văn A – CV Online</title>
-
-  <!-- Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    /* === RESET CƠ BẢN === */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html,
-    body {
-      height: 100%;
-      font-family: 'Open Sans', sans-serif;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    /* === NỀN VIDEO HOẶC MÀU NỀN DỰ PHÒNG === */
-    body {
-      background-color: #1a1a2e; /* Màu nền khi video không load */
-      overflow-x: hidden;
-    }
-    video.bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    /* === CONTAINER CHỨA TOÀN BỘ NỘI DUNG CV === */
-    .content {
-      position: relative;
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 40px 20px;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 8px;
-    }
-
-    /* === HEADER: ẢNH CHÂN DUNG + TÊN + CHỨC DANH + LIÊN HỆ === */
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .header img.profile {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #ffffff;
-      margin-bottom: 20px;
-    }
-    .header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-    .header h2 {
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-bottom: 15px;
-      color: #e0e0e0;
-    }
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      font-size: 0.95rem;
-      color: #d0d0d0;
-    }
-    .contact-info img {
-      width: 20px;
-      vertical-align: middle;
-      margin-right: 5px;
-    }
-
-    /* === CÁC SECTION (PROFILE, EDUCATION, WORK EXPERIENCE, SKILLS...) === */
-    section {
-      margin-bottom: 40px;
-    }
-    section h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #ffffff;
-      display: inline-block;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-    section p,
-    section ul {
-      font-size: 1rem;
-      margin-left: 10px;
-      margin-bottom: 10px;
-      color: #f0f0f0;
-    }
-    .skills-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .skills-list li {
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.95rem;
-      font-weight: 300;
-    }
-
-    /* === FOOTER (TUỲ CHỌN) === */
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #bbbbbb;
-      margin-top: 20px;
-    }
-
-    /* === RESPONSIVE ĐƠN GIẢN === */
-    @media screen and (max-width: 600px) {
-      .content {
-        padding: 20px 10px;
-      }
-      .header h1 {
-        font-size: 2rem;
-      }
-      .header h2 {
-        font-size: 1rem;
-      }
-      .contact-info {
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Anh Kiệt - Software Engineer</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-  <!-- === VIDEO NỀN (thay bằng video của bạn) === -->
-  <video class="bg-video" autoplay muted loop>
-    <source src="video/background.mp4" type="video/mp4" />
-    <!-- Nếu muốn thêm WebM, có thể chèn thêm:
-    <source src="video/background.webm" type="video/webm" /> -->
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- === NỘI DUNG CV CHÍNH === -->
-  <div class="content">
-    <!-- Header: Ảnh, Tên, Chức danh, Liên hệ -->
-    <div class="header">
-      <!-- Ảnh chân dung -->
-      <img src="common/img/profile.jpg" alt="Ảnh chân dung" class="profile" />
-      <!-- Tên & Chức danh -->
-      <h1>Nguyễn Văn A</h1>
-      <h2>Software Engineer</h2>
-
-      <!-- Thông tin liên hệ -->
-      <div class="contact-info">
-        <span>
-          <img src="common/img/logo-email.png" alt="Email icon" />
-          ng.vana@example.com
-        </span>
-        <span>
-          <img src="common/img/logo-phone.png" alt="Phone icon" />
-          +84 912 345 678
-        </span>
-      </div>
-    </div>
-
-    <!-- Section: PROFILE -->
-    <section id="profile">
-      <h3>PROFILE</h3>
-      <p>
-        Tôi là một kỹ sư phần mềm với hơn 5 năm kinh nghiệm phát triển ứng dụng
-        web. Thành thạo HTML, CSS, JavaScript, React và Node.js. Đam mê xây dựng
-        các sản phẩm có trải nghiệm người dùng tốt và hiệu suất cao.
-      </p>
+    <header>
+        <h1>Nguyễn Anh Kiệt</h1>
+        <div>
+            <p>SOFTWARE ENGINEER</p>
+            <p>(+84) 816630164</p>
+            <p><a href="mailto:kietna.work@gmail.com">kietna.work@gmail.com</a></p>
+            <p>Ho Chi Minh City, VN</p>
+            <p><a href="https://github.com/NguyenAnhKietUIT">GitHub</a></p>
+            <p><a href="https://www.linkedin.com/in/kan-dev">LinkedIn</a></p>
+        </div>
+    </header>
+    <section>
+        <h2>SUMMARY</h2>
+        <p>I am a software engineer with two years of experience, specializing in building responsive, high-performance user interfaces using TypeScript and modern frameworks such as Vue, Nuxt, React, and Next. I focus on creating intuitive user experiences with clean, maintainable code and take pride in turning designs into smooth, pixel-perfect interfaces. Recently, I have been expanding into fullstack development, working with Node.js to build scalable APIs, manage backend logic, and interact with databases such as MongoDB and Firebase. I am passionate about bridging the gap between design and technology, continuously improving my skills, and contributing to collaborative, product-focused teams.</p>
     </section>
-
-    <!-- Section: EDUCATION -->
-    <section id="education">
-      <h3>EDUCATION</h3>
-      <p>
-        <strong>2015 – 2019:</strong> Cử nhân Công nghệ Thông tin, Đại học Bách
-        Khoa HCM (GPA: 3.6/4.0)
-      </p>
+    <section>
+        <h2>WORK EXPERIENCE</h2>
+        <h3>mHealth Technologies JSC - Full-time</h3>
+        <p>Jan 2024 - Feb 2025</p>
+        <ul>
+            <li>Website Revamps: Participated in rebuilding company websites using the latest framework version, improving performance and user experience.</li>
+            <li>Feature Development: Led the design and implementation of new features for the Wellcare application, increasing traffic and creating more product-selling opportunities for the Marketing team.</li>
+            <li>Chatbot Optimization: Optimized memory usage for the chatbot application, significantly improving accuracy by enhancing contextual understanding from stored data.</li>
+            <li>Search & Content Management: Integrated Elasticsearch and Notion to manage displayed content across the application and website, enhancing search functionality and making information retrieval more efficient for users.</li>
+        </ul>
+        <h3>mHealth Technologies JSC - Internship</h3>
+        <p>Oct 2023 - Dec 2023</p>
+        <ul>
+            <li>UI/UX Enhancement: Improved the UX and UI of existing application features, enhancing user experience and engagement.</li>
+            <li>Payment Support Development: Developed payment support features for the customer care department, significantly increasing transaction processing speed and reducing error rates.</li>
+            <li>Product Development Leadership: Led the team in building and launching two new products - Knowledge Questions and Expert Verification - empowering users with proactive health management tools.</li>
+            <li>AI Integration: Integrated the LangChain framework to develop a robust chatbot application, enabling users to access health-related inquiries quickly.</li>
+        </ul>
     </section>
-
-    <!-- Section: WORK EXPERIENCE -->
-    <section id="work-experience">
-      <h3>WORK EXPERIENCE</h3>
-
-      <p>
-        <strong>2021 – Nay:</strong> Senior Frontend Developer tại Công ty ABC
-      </p>
-      <ul>
-        <li>
-          Tham gia phát triển SPA với React.js, tối ưu performance và cải thiện
-          trải nghiệm người dùng.
-        </li>
-        <li>
-          Thiết kế và triển khai module quản lý người dùng, tích hợp RESTful API.
-        </li>
-      </ul>
-
-      <p>
-        <strong>2019 – 2021:</strong> Frontend Developer tại Công ty XYZ
-      </p>
-      <ul>
-        <li>
-          Xây dựng giao diện responsive cho hệ thống quản lý bán hàng.
-        </li>
-        <li>
-          Liên kết với backend team để thiết kế API, đảm bảo hoạt động ổn định.
-        </li>
-      </ul>
+    <section>
+        <h2>TECHNICAL SKILLS</h2>
+        <dl>
+            <dt>Languages</dt>
+            <dd>HTML5, CSS3, JavaScript (ES6+), TypeScript, Node.js, Python</dd>
+            <dt>Frameworks & Libraries</dt>
+            <dd>Vue.js (Vue 3, Nuxt.js), React.js (React 19 + Next 15), Express.js, NestJS, FastAPI</dd>
+            <dt>Styling</dt>
+            <dd>Tailwind CSS, Responsive Design, Cross-Browser Compatibility, CSS Grid & Flexbox</dd>
+            <dt>State Management</dt>
+            <dd>Pinia, Vuex, React Context API, Redux, Zustand</dd>
+            <dt>Performance & Optimization</dt>
+            <dd>Lazy Loading, Code Splitting, SSR, Image Optimization, Basic Web Performance Optimization</dd>
+            <dt>Testing & Debugging</dt>
+            <dd>Vitest, Cypress, Playwright, Chrome DevTools, Postman</dd>
+            <dt>Web Accessibility</dt>
+            <dd>Semantic HTML, ARIA Basics</dd>
+            <dt>Design Tools</dt>
+            <dd>Figma, Adobe Photoshop</dd>
+            <dt>Database Management</dt>
+            <dd>PostgreSQL, MySQL, MongoDB, Firebase Realtime Database, Redis</dd>
+            <dt>Authentication & Authorization</dt>
+            <dd>JWT, OAuth 2.0, Firebase Auth, Session-based Auth</dd>
+            <dt>Real-time & API</dt>
+            <dd>WebSocket, Socket.IO, Firebase Realtime, REST API, GraphQL</dd>
+            <dt>Search & Messaging</dt>
+            <dd>Elasticsearch, RabbitMQ</dd>
+        </dl>
     </section>
-
-    <!-- Section: SKILLS -->
-    <section id="skills">
-      <h3>SKILLS</h3>
-      <ul class="skills-list">
-        <li>HTML5</li>
-        <li>CSS3/SASS</li>
-        <li>JavaScript (ES6+)</li>
-        <li>React.js</li>
-        <li>Node.js</li>
-        <li>Git/GitHub</li>
-        <li>RESTful API</li>
-        <li>Responsive Design</li>
-      </ul>
+    <section>
+        <h2>SOFT SKILLS</h2>
+        <dl>
+            <dt>Personal Attributes</dt>
+            <dd>Self-management, Time management, Willingness to learn, Adaptability & continuous learning, Problem-solving</dd>
+            <dt>Team & Communication</dt>
+            <dd>Teamwork & collaboration, Communication skills, Empathy & user-centric mindset, Teamlead</dd>
+            <dt>Languages</dt>
+            <dd>English (TOEIC Reading & Listening: 545, Speaking & Writing: 240)</dd>
+        </dl>
     </section>
-
-    <!-- Section: PROJECTS -->
-    <section id="projects">
-      <h3>PROJECTS</h3>
-      <p>
-        <strong>MyPortfolio:</strong> Trang portfolio cá nhân dùng React và thư
-        viện TailwindCSS. Hiển thị danh sách dự án, blog và liên hệ.
-      </p>
-      <ul>
-        <li>
-          <a
-            href="https://github.com/username/myportfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="color: #ffd700;"
-            >GitHub Repo</a
-          >
-        </li>
-      </ul>
+    <section>
+        <h2>EDUCATION</h2>
+        <p>2020 - Graduated 2024</p>
+        <p>University of Information Technology - VNUHCM</p>
+        <p>Major: Information System - GPA: 3.45/4</p>
     </section>
-
-    <!-- Footer (tuỳ chọn) -->
-    <footer>
-      &copy; 2025 Nguyễn Văn A • All Rights Reserved
-    </footer>
-  </div>
+    <section>
+        <h2>REFERENCE</h2>
+        <p>Phong Nguyen - mHealth Technologies JSC/ CEO</p>
+        <p>Email: <a href="mailto:phongnguyen@wellcare.sw">phongnguyen@wellcare.sw</a></p>
+        <p>LinkedIn: Phong Nguyen</p>
+    </section>
 </body>
 </html>
