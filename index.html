@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyễn Anh Kiệt - Software Engineer</title>
+  <style>
+    /* Reset cơ bản */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    /* Video nền full-screen */
+    #bg-video {
+      position: fixed; right: 0; bottom: 0;
+      min-width: 100%; min-height: 100%;
+      width: auto; height: auto;
+      z-index: -1;
+      object-fit: cover;
+    }
+    /* Overlay mờ trên video để tăng độ tương phản */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Nội dung chính */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #ccc;
+    }
+    .contact {
+      text-align: center;
+      font-size: 1rem;
+      color: #ddd;
+      margin-bottom: 2rem;
+    }
+    .contact a {
+      color: #8ab4f8;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #555;
+      padding-bottom: 0.5rem;
+      color: #eee;
+    }
+    section {
+      /* ban đầu ẩn mờ, chờ fade-in */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-in 1s forwards;
+    }
+    section:nth-child(odd) { animation-delay: 0.3s; }
+    section:nth-child(even) { animation-delay: 0.6s; }
+    @keyframes fade-in {
+      to { opacity: 1; transform: none; }
+    }
+    ul {
+      margin-left: 1.5rem;
+      list-style: disc;
+      line-height: 1.5;
+    }
+    /* Responsive cho di động */
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.2rem; }
+      .content { padding: 1rem; }
+    }
+    @media (max-width: 750px) {
+      /* Ẩn video và dùng nền tối trên mobile */
+      #bg-video { display: none; }
+      body { background: #000; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Video nền -->
+  <video id="bg-video" autoplay muted loop>
+    <source src="https://mixkit.co/free-stock-video/animation-of-futuristic-devices-99786/download" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Nội dung CV -->
+  <div class="content">
+    <h1>Nguyễn Anh Kiệt</h1>
+    <h2>Software Engineer</h2>
+    <p class="contact">
+      (+84) 816 630 164 • <a href="mailto:kietna.work@gmail.com">kietna.work@gmail.com</a> • TP. HCM<br />
+      <a href="https://github.com/NguyenAnhKietUIT" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/kan-dev" target="_blank">LinkedIn</a>
+    </p>
+
+    <section id="summary">
+      <h3>Giới thiệu</h3>
+      <p>
+        Tôi là một kỹ sư phần mềm với hai năm kinh nghiệm, chuyên về xây dựng giao diện người dùng đáp ứng và hiệu suất cao
+        sử dụng TypeScript và các framework hiện đại như Vue, Nuxt, React và Next. Tôi tập trung tạo trải nghiệm người dùng trực quan
+        với mã sạch, dễ bảo trì và tự hào biến thiết kế thành giao diện mượt mà, chuẩn pixel. Gần đây tôi đang mở rộng sang
+        phát triển full-stack, làm việc với Node.js để xây dựng API có thể mở rộng, xử lý logic backend và tương tác với
+        cơ sở dữ liệu như MongoDB và Firebase. Tôi đam mê kết nối giữa thiết kế và công nghệ, liên tục cải thiện kỹ năng và
+        đóng góp vào các nhóm phát triển tập trung sản phẩm.
+      </p>
+    </section>
+
+    <section id="experience">
+      <h3>Kinh nghiệm làm việc</h3>
+      <h4>mHealth Technologies JSC – Full-time (Jan 2024 – Feb 2025)</h4>
+      <ul>
+        <li><strong>Website Revamp:</strong> Tham gia tái cấu trúc các trang web công ty với phiên bản framework mới nhất, cải thiện hiệu suất và trải nghiệm người dùng.</li>
+        <li><strong>Feature Development:</strong> Dẫn dắt thiết kế và triển khai các tính năng mới cho ứng dụng Wellcare, tăng lưu lượng truy cập và tạo thêm cơ hội bán hàng cho bộ phận Marketing.</li>
+        <li><strong>Chatbot Optimization:</strong> Tối ưu hóa bộ nhớ cho ứng dụng chatbot, cải thiện đáng kể độ chính xác bằng cách nâng cao khả năng hiểu ngữ cảnh từ dữ liệu lưu trữ.</li>
+        <li><strong>Search & Content Management:</strong> Tích hợp Elasticsearch và Notion để quản lý nội dung trên ứng dụng và website, nâng cao chức năng tìm kiếm và giúp người dùng truy xuất thông tin hiệu quả hơn.</li>
+      </ul>
+      <h4>mHealth Technologies JSC – Internship (Oct 2023 – Dec 2023)</h4>
+      <!-- Mô tả thêm nếu cần -->
+    </section>
+
+    <section id="skills">
+      <h3>Kỹ năng kỹ thuật</h3>
+      <ul>
+        <li><strong>Ngôn ngữ & Công cụ:</strong> HTML5, CSS3, JavaScript (ES6+), TypeScript, Node.js, Python</li>
+        <li><strong>Frameworks & Thư viện:</strong> Vue.js (Vue 3, Nuxt.js), React (React 19 + Next 15), Express.js, NestJS, FastAPI</li>
+        <li><strong>Styling & Responsive:</strong> Tailwind CSS, Thiết kế đáp ứng, Tương thích đa trình duyệt, CSS Grid, Flexbox</li>
+        <li><strong>Quản lý trạng thái:</strong> Pinia, Vuex, React Context, Redux, Zustand</li>
+        <li><strong>Tối ưu & Hiệu suất:</strong> Lazy Loading, Code Splitting, SSR, Tối ưu ảnh, Tối ưu hiệu suất cơ bản</li>
+        <li><strong>Kiểm thử & Debug:</strong> Vitest, Cypress, Playwright, Chrome DevTools, Postman</li>
+        <li><strong>Truy cập Web:</strong> HTML có cấu trúc, ARIA cơ bản</li>
+        <li><strong>Công cụ Thiết kế:</strong> Figma, Photoshop</li>
+        <li><strong>Cơ sở dữ liệu:</strong> PostgreSQL, MySQL, MongoDB, Firebase, Redis</li>
+        <li><strong>Xác thực & Ủy quyền:</strong> JWT, OAuth 2.0, Firebase Auth, Phiên (Session)</li>
+        <li><strong>Thời gian thực & API:</strong> WebSocket, Socket.IO, Firebase RTDB, REST API, GraphQL</li>
+        <li><strong>Tìm kiếm & Messaging:</strong> Elasticsearch, RabbitMQ</li>
+      </ul>
+    </section>
+
+    <section id="soft-skills">
+      <h3>Kỹ năng mềm</h3>
+      <ul>
+        <li><strong>Thuộc tính cá nhân:</strong> Tự quản lý, Quản lý thời gian, Sẵn sàng học hỏi, Khả năng thích ứng liên tục, Giải quyết vấn đề</li>
+        <li><strong>Đội nhóm & Giao tiếp:</strong> Hợp tác nhóm, Kỹ năng giao tiếp, Thấu cảm & tư duy người dùng, Kinh nghiệm teamlead</li>
+      </ul>
+    </section>
+
+    <section id="languages">
+      <h3>Ngoại ngữ</h3>
+      <ul>
+        <li><strong>Tiếng Anh:</strong> TOEIC (Đọc & Nghe: 545; Nói & Viết: 240)</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h3>Học vấn</h3>
+      <p>University of Information Technology – VNUHCM (2020 – 2024)</p>
+      <p>Major: Information System – GPA: 3.45/4</p>
+    </section>
+
+    <section id="reference">
+      <h3>Người tham khảo</h3>
+      <p>Phong Nguyen – CEO, mHealth Technologies JSC</p>
+      <p>Email: phong.nguyen@wellcare.vn | LinkedIn: Phong Nguyen</p>
+    </section>
+  </div>
+
+  <script>
+    // Hiệu ứng fade-in khi cuộn vào view
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      const options = { threshold: 0.3 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'none';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      sections.forEach(sec => observer.observe(sec));
+    });
+  </script>
+</body>
+</html>
