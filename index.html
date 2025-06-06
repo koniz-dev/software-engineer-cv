@@ -1,210 +1,277 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nguyễn Anh Kiệt - Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyễn Văn A – CV Online</title>
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    /* Reset cơ bản */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      width: 100%; height: 100%;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      scroll-behavior: smooth;
+    /* === RESET CƠ BẢN === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    /* Video nền full-screen */
-    #bg-video {
-      position: fixed; right: 0; bottom: 0;
-      min-width: 100%; min-height: 100%;
-      width: auto; height: auto;
-      z-index: -1;
-      object-fit: cover;
+    html,
+    body {
+      height: 100%;
+      font-family: 'Open Sans', sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
     }
-    /* Overlay mờ trên video để tăng độ tương phản */
-    .overlay {
+
+    /* === NỀN VIDEO HOẶC MÀU NỀN DỰ PHÒNG === */
+    body {
+      background-color: #1a1a2e; /* Màu nền khi video không load */
+      overflow-x: hidden;
+    }
+    video.bg-video {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      pointer-events: none;
-      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
     }
-    /* Nội dung chính */
+
+    /* === CONTAINER CHỨA TOÀN BỘ NỘI DUNG CV === */
     .content {
       position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+    }
+
+    /* === HEADER: ẢNH CHÂN DUNG + TÊN + CHỨC DANH + LIÊN HỆ === */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header img.profile {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .header h2 {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+    .contact-info {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: #d0d0d0;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
+    .contact-info img {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 5px;
     }
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      color: #ccc;
-    }
-    .contact {
-      text-align: center;
-      font-size: 1rem;
-      color: #ddd;
-      margin-bottom: 2rem;
-    }
-    .contact a {
-      color: #8ab4f8;
-      text-decoration: none;
-    }
-    .contact a:hover {
-      text-decoration: underline;
+
+    /* === CÁC SECTION (PROFILE, EDUCATION, WORK EXPERIENCE, SKILLS...) === */
+    section {
+      margin-bottom: 40px;
     }
     section h3 {
       font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #555;
-      padding-bottom: 0.5rem;
-      color: #eee;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #ffffff;
+      display: inline-block;
+      margin-bottom: 15px;
+      text-transform: uppercase;
     }
-    section {
-      /* ban đầu ẩn mờ, chờ fade-in */
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fade-in 1s forwards;
+    section p,
+    section ul {
+      font-size: 1rem;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      color: #f0f0f0;
     }
-    section:nth-child(odd) { animation-delay: 0.3s; }
-    section:nth-child(even) { animation-delay: 0.6s; }
-    @keyframes fade-in {
-      to { opacity: 1; transform: none; }
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    ul {
-      margin-left: 1.5rem;
-      list-style: disc;
-      line-height: 1.5;
+    .skills-list li {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 300;
     }
-    /* Responsive cho di động */
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.2rem; }
-      .content { padding: 1rem; }
+
+    /* === FOOTER (TUỲ CHỌN) === */
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #bbbbbb;
+      margin-top: 20px;
     }
-    @media (max-width: 750px) {
-      /* Ẩn video và dùng nền tối trên mobile */
-      #bg-video { display: none; }
-      body { background: #000; }
+
+    /* === RESPONSIVE ĐƠN GIẢN === */
+    @media screen and (max-width: 600px) {
+      .content {
+        padding: 20px 10px;
+      }
+      .header h1 {
+        font-size: 2rem;
+      }
+      .header h2 {
+        font-size: 1rem;
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- Video nền -->
-  <video id="bg-video" autoplay muted loop>
-    <source src="https://mixkit.co/free-stock-video/animation-of-futuristic-devices-99786/download" type="video/mp4" />
-    Your browser does not support HTML5 video.
+  <!-- === VIDEO NỀN (thay bằng video của bạn) === -->
+  <video class="bg-video" autoplay muted loop>
+    <source src="video/background.mp4" type="video/mp4" />
+    <!-- Nếu muốn thêm WebM, có thể chèn thêm:
+    <source src="video/background.webm" type="video/webm" /> -->
+    Your browser does not support the video tag.
   </video>
-  <div class="overlay"></div>
 
-  <!-- Nội dung CV -->
+  <!-- === NỘI DUNG CV CHÍNH === -->
   <div class="content">
-    <h1>Nguyễn Anh Kiệt</h1>
-    <h2>Software Engineer</h2>
-    <p class="contact">
-      (+84) 816 630 164 • <a href="mailto:kietna.work@gmail.com">kietna.work@gmail.com</a> • TP. HCM<br />
-      <a href="https://github.com/NguyenAnhKietUIT" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/kan-dev" target="_blank">LinkedIn</a>
-    </p>
+    <!-- Header: Ảnh, Tên, Chức danh, Liên hệ -->
+    <div class="header">
+      <!-- Ảnh chân dung -->
+      <img src="common/img/profile.jpg" alt="Ảnh chân dung" class="profile" />
+      <!-- Tên & Chức danh -->
+      <h1>Nguyễn Văn A</h1>
+      <h2>Software Engineer</h2>
 
-    <section id="summary">
-      <h3>Giới thiệu</h3>
+      <!-- Thông tin liên hệ -->
+      <div class="contact-info">
+        <span>
+          <img src="common/img/logo-email.png" alt="Email icon" />
+          ng.vana@example.com
+        </span>
+        <span>
+          <img src="common/img/logo-phone.png" alt="Phone icon" />
+          +84 912 345 678
+        </span>
+      </div>
+    </div>
+
+    <!-- Section: PROFILE -->
+    <section id="profile">
+      <h3>PROFILE</h3>
       <p>
-        Tôi là một kỹ sư phần mềm với hai năm kinh nghiệm, chuyên về xây dựng giao diện người dùng đáp ứng và hiệu suất cao
-        sử dụng TypeScript và các framework hiện đại như Vue, Nuxt, React và Next. Tôi tập trung tạo trải nghiệm người dùng trực quan
-        với mã sạch, dễ bảo trì và tự hào biến thiết kế thành giao diện mượt mà, chuẩn pixel. Gần đây tôi đang mở rộng sang
-        phát triển full-stack, làm việc với Node.js để xây dựng API có thể mở rộng, xử lý logic backend và tương tác với
-        cơ sở dữ liệu như MongoDB và Firebase. Tôi đam mê kết nối giữa thiết kế và công nghệ, liên tục cải thiện kỹ năng và
-        đóng góp vào các nhóm phát triển tập trung sản phẩm.
+        Tôi là một kỹ sư phần mềm với hơn 5 năm kinh nghiệm phát triển ứng dụng
+        web. Thành thạo HTML, CSS, JavaScript, React và Node.js. Đam mê xây dựng
+        các sản phẩm có trải nghiệm người dùng tốt và hiệu suất cao.
       </p>
     </section>
 
-    <section id="experience">
-      <h3>Kinh nghiệm làm việc</h3>
-      <h4>mHealth Technologies JSC – Full-time (Jan 2024 – Feb 2025)</h4>
-      <ul>
-        <li><strong>Website Revamp:</strong> Tham gia tái cấu trúc các trang web công ty với phiên bản framework mới nhất, cải thiện hiệu suất và trải nghiệm người dùng.</li>
-        <li><strong>Feature Development:</strong> Dẫn dắt thiết kế và triển khai các tính năng mới cho ứng dụng Wellcare, tăng lưu lượng truy cập và tạo thêm cơ hội bán hàng cho bộ phận Marketing.</li>
-        <li><strong>Chatbot Optimization:</strong> Tối ưu hóa bộ nhớ cho ứng dụng chatbot, cải thiện đáng kể độ chính xác bằng cách nâng cao khả năng hiểu ngữ cảnh từ dữ liệu lưu trữ.</li>
-        <li><strong>Search & Content Management:</strong> Tích hợp Elasticsearch và Notion để quản lý nội dung trên ứng dụng và website, nâng cao chức năng tìm kiếm và giúp người dùng truy xuất thông tin hiệu quả hơn.</li>
-      </ul>
-      <h4>mHealth Technologies JSC – Internship (Oct 2023 – Dec 2023)</h4>
-      <!-- Mô tả thêm nếu cần -->
-    </section>
-
-    <section id="skills">
-      <h3>Kỹ năng kỹ thuật</h3>
-      <ul>
-        <li><strong>Ngôn ngữ & Công cụ:</strong> HTML5, CSS3, JavaScript (ES6+), TypeScript, Node.js, Python</li>
-        <li><strong>Frameworks & Thư viện:</strong> Vue.js (Vue 3, Nuxt.js), React (React 19 + Next 15), Express.js, NestJS, FastAPI</li>
-        <li><strong>Styling & Responsive:</strong> Tailwind CSS, Thiết kế đáp ứng, Tương thích đa trình duyệt, CSS Grid, Flexbox</li>
-        <li><strong>Quản lý trạng thái:</strong> Pinia, Vuex, React Context, Redux, Zustand</li>
-        <li><strong>Tối ưu & Hiệu suất:</strong> Lazy Loading, Code Splitting, SSR, Tối ưu ảnh, Tối ưu hiệu suất cơ bản</li>
-        <li><strong>Kiểm thử & Debug:</strong> Vitest, Cypress, Playwright, Chrome DevTools, Postman</li>
-        <li><strong>Truy cập Web:</strong> HTML có cấu trúc, ARIA cơ bản</li>
-        <li><strong>Công cụ Thiết kế:</strong> Figma, Photoshop</li>
-        <li><strong>Cơ sở dữ liệu:</strong> PostgreSQL, MySQL, MongoDB, Firebase, Redis</li>
-        <li><strong>Xác thực & Ủy quyền:</strong> JWT, OAuth 2.0, Firebase Auth, Phiên (Session)</li>
-        <li><strong>Thời gian thực & API:</strong> WebSocket, Socket.IO, Firebase RTDB, REST API, GraphQL</li>
-        <li><strong>Tìm kiếm & Messaging:</strong> Elasticsearch, RabbitMQ</li>
-      </ul>
-    </section>
-
-    <section id="soft-skills">
-      <h3>Kỹ năng mềm</h3>
-      <ul>
-        <li><strong>Thuộc tính cá nhân:</strong> Tự quản lý, Quản lý thời gian, Sẵn sàng học hỏi, Khả năng thích ứng liên tục, Giải quyết vấn đề</li>
-        <li><strong>Đội nhóm & Giao tiếp:</strong> Hợp tác nhóm, Kỹ năng giao tiếp, Thấu cảm & tư duy người dùng, Kinh nghiệm teamlead</li>
-      </ul>
-    </section>
-
-    <section id="languages">
-      <h3>Ngoại ngữ</h3>
-      <ul>
-        <li><strong>Tiếng Anh:</strong> TOEIC (Đọc & Nghe: 545; Nói & Viết: 240)</li>
-      </ul>
-    </section>
-
+    <!-- Section: EDUCATION -->
     <section id="education">
-      <h3>Học vấn</h3>
-      <p>University of Information Technology – VNUHCM (2020 – 2024)</p>
-      <p>Major: Information System – GPA: 3.45/4</p>
+      <h3>EDUCATION</h3>
+      <p>
+        <strong>2015 – 2019:</strong> Cử nhân Công nghệ Thông tin, Đại học Bách
+        Khoa HCM (GPA: 3.6/4.0)
+      </p>
     </section>
 
-    <section id="reference">
-      <h3>Người tham khảo</h3>
-      <p>Phong Nguyen – CEO, mHealth Technologies JSC</p>
-      <p>Email: phong.nguyen@wellcare.vn | LinkedIn: Phong Nguyen</p>
+    <!-- Section: WORK EXPERIENCE -->
+    <section id="work-experience">
+      <h3>WORK EXPERIENCE</h3>
+
+      <p>
+        <strong>2021 – Nay:</strong> Senior Frontend Developer tại Công ty ABC
+      </p>
+      <ul>
+        <li>
+          Tham gia phát triển SPA với React.js, tối ưu performance và cải thiện
+          trải nghiệm người dùng.
+        </li>
+        <li>
+          Thiết kế và triển khai module quản lý người dùng, tích hợp RESTful API.
+        </li>
+      </ul>
+
+      <p>
+        <strong>2019 – 2021:</strong> Frontend Developer tại Công ty XYZ
+      </p>
+      <ul>
+        <li>
+          Xây dựng giao diện responsive cho hệ thống quản lý bán hàng.
+        </li>
+        <li>
+          Liên kết với backend team để thiết kế API, đảm bảo hoạt động ổn định.
+        </li>
+      </ul>
     </section>
+
+    <!-- Section: SKILLS -->
+    <section id="skills">
+      <h3>SKILLS</h3>
+      <ul class="skills-list">
+        <li>HTML5</li>
+        <li>CSS3/SASS</li>
+        <li>JavaScript (ES6+)</li>
+        <li>React.js</li>
+        <li>Node.js</li>
+        <li>Git/GitHub</li>
+        <li>RESTful API</li>
+        <li>Responsive Design</li>
+      </ul>
+    </section>
+
+    <!-- Section: PROJECTS -->
+    <section id="projects">
+      <h3>PROJECTS</h3>
+      <p>
+        <strong>MyPortfolio:</strong> Trang portfolio cá nhân dùng React và thư
+        viện TailwindCSS. Hiển thị danh sách dự án, blog và liên hệ.
+      </p>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/username/myportfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #ffd700;"
+            >GitHub Repo</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer (tuỳ chọn) -->
+    <footer>
+      &copy; 2025 Nguyễn Văn A • All Rights Reserved
+    </footer>
   </div>
-
-  <script>
-    // Hiệu ứng fade-in khi cuộn vào view
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('section');
-      const options = { threshold: 0.3 };
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'none';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, options);
-      sections.forEach(sec => observer.observe(sec));
-    });
-  </script>
 </body>
 </html>

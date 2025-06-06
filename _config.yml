@@ -1,0 +1,11 @@
+# _config.yml
+
+title: Curriculum Vitae Online
+description: "Curriculum Vitae of Anh Kiet Nguyen"
+baseurl: ""
+url: "https://koniz-dev.github.io"
+
+theme: null
+plugins: []
+
+future: true
