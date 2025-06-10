@@ -5,455 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV - Nguyễn Anh Kiệt</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Garamond', 'EB Garamond', 'Times New Roman', serif;
-      overflow-x: hidden;
-      line-height: 1.4;
-    }
-
-    /* Video Background */
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      object-fit: cover;
-    }
-
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-
-    /* Main Container */
-    .container {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* CV Card */
-    .cv-card {
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 15px;
-    }
-
-    .name {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: white;
-    }
-
-    .title {
-      font-size: 14px;
-      color: #ccc;
-      margin-bottom: 10px;
-    }
-
-    .contact-line {
-      font-size: 11px;
-      color: #ccc;
-      margin-bottom: 3px;
-    }
-
-    .links {
-      font-size: 11px;
-      color: #4CAF50;
-      text-decoration: underline;
-    }
-
-    /* Vertical Content Layout */
-    .content {
-      margin-top: 20px;
-    }
-
-    /* Section Styles */
-    .section {
-      margin-bottom: 25px;
-    }
-
-    .section-title {
-      font-size: 14px;
-      font-weight: bold;
-      color: white;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
-    .section-content {
-      font-size: 11px;
-      color: #e0e0e0;
-      text-align: justify;
-    }
-
-    /* Skills List */
-    .skills-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .skills-list li {
-      font-size: 11px;
-      color: #e0e0e0;
-      margin-bottom: 6px;
-      position: relative;
-      padding-left: 12px;
-    }
-
-    .skills-list li:before {
-      content: "•";
-      color: white;
-      position: absolute;
-      left: 0;
-    }
-
-    /* Work Experience */
-    .work-item {
-      margin-bottom: 15px;
-    }
-
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 5px;
-    }
-
-    .company {
-      font-size: 12px;
-      font-weight: bold;
-      color: white;
-    }
-
-    .duration {
-      font-size: 11px;
-      color: #4CAF50;
-      font-style: italic;
-    }
-
-    .work-duties {
-      list-style: none;
-      padding: 0;
-    }
-
-    .work-duties li {
-      font-size: 11px;
-      color: #e0e0e0;
-      margin-bottom: 4px;
-      position: relative;
-      padding-left: 12px;
-    }
-
-    .work-duties li:before {
-      content: "•";
-      color: white;
-      position: absolute;
-      left: 0;
-    }
-
-    /* Education */
-    .edu-item {
-      margin-bottom: 8px;
-    }
-
-    .degree {
-      font-size: 12px;
-      font-weight: bold;
-      color: white;
-    }
-
-    .university {
-      font-size: 11px;
-      color: #e0e0e0;
-    }
-
-    /* Project */
-    .project-title {
-      font-size: 12px;
-      font-weight: bold;
-      color: white;
-      margin-bottom: 5px;
-    }
-
-    .project-description {
-      font-size: 11px;
-      color: #e0e0e0;
-      margin-bottom: 8px;
-    }
-
-    .project-features {
-      list-style: none;
-      padding: 0;
-    }
-
-    .project-features li {
-      font-size: 11px;
-      color: #e0e0e0;
-      margin-bottom: 4px;
-      position: relative;
-      padding-left: 12px;
-    }
-
-    .project-features li:before {
-      content: "•";
-      color: white;
-      position: absolute;
-      left: 0;
-    }
-
-    /* Print Button */
-    .print-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    .print-btn:hover {
-      background: #45a049;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(76, 175, 80, 0.4);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .cv-card {
-        padding: 20px;
-      }
-
-      .print-btn {
-        bottom: 20px;
-        right: 20px;
-        padding: 12px 16px;
-        font-size: 14px;
-      }
-
-      .work-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-
-      .video-background,
-      .video-overlay,
-      .print-btn {
-        display: none !important;
-      }
-
-      * {
-        -webkit-print-color-adjust: exact !important;
-        color-adjust: exact !important;
-      }
-
-      @page {
-        size: A4;
-        margin: 0.5in !important;
-      }
-
-      body {
-        background: white !important;
-        font-size: 11px !important;
-        line-height: 1.3 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-
-      .container {
-        max-width: 100% !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-
-      .cv-card {
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-        border: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        page-break-inside: avoid;
-      }
-
-      .header {
-        margin-bottom: 15px !important;
-        padding-bottom: 10px !important;
-        border-bottom: 1px solid #333 !important;
-      }
-
-      .name {
-        font-size: 18px !important;
-        color: black !important;
-        margin-bottom: 3px !important;
-      }
-
-      .title {
-        font-size: 12px !important;
-        color: #333 !important;
-        margin-bottom: 5px !important;
-      }
-
-      .contact-line {
-        font-size: 9px !important;
-        color: #333 !important;
-        margin-bottom: 2px !important;
-      }
-
-      .links {
-        font-size: 9px !important;
-        color: #333 !important;
-        text-decoration: none !important;
-      }
-
-      .content {
-        margin-top: 10px !important;
-      }
-
-      .section {
-        margin-bottom: 12px !important;
-        page-break-inside: avoid;
-      }
-
-      .section-title {
-        font-size: 11px !important;
-        color: black !important;
-        margin-bottom: 5px !important;
-        font-weight: bold !important;
-      }
-
-      .section-content {
-        font-size: 9px !important;
-        color: #333 !important;
-        line-height: 1.2 !important;
-      }
-
-      .skills-list li {
-        font-size: 9px !important;
-        color: #333 !important;
-        margin-bottom: 3px !important;
-        line-height: 1.2 !important;
-      }
-
-      .work-item {
-        margin-bottom: 10px !important;
-        page-break-inside: avoid;
-      }
-
-      .work-header {
-        margin-bottom: 3px !important;
-      }
-
-      .company {
-        font-size: 10px !important;
-        color: black !important;
-        font-weight: bold !important;
-      }
-
-      .duration {
-        font-size: 9px !important;
-        color: #666 !important;
-      }
-
-      .work-duties li {
-        font-size: 9px !important;
-        color: #333 !important;
-        margin-bottom: 2px !important;
-        line-height: 1.2 !important;
-      }
-
-      .edu-item {
-        margin-bottom: 5px !important;
-      }
-
-      .degree {
-        font-size: 10px !important;
-        color: black !important;
-        font-weight: bold !important;
-      }
-
-      .university {
-        font-size: 9px !important;
-        color: #333 !important;
-      }
-
-      .project-title {
-        font-size: 10px !important;
-        color: black !important;
-        font-weight: bold !important;
-        margin-bottom: 3px !important;
-      }
-
-      .project-description {
-        font-size: 9px !important;
-        color: #333 !important;
-        margin-bottom: 5px !important;
-        line-height: 1.2 !important;
-      }
-
-      .project-features li {
-        font-size: 9px !important;
-        color: #333 !important;
-        margin-bottom: 2px !important;
-        line-height: 1.2 !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+  </div>
+
   <!-- Video Background -->
-  <video class="video-background" autoplay muted loop>
-    <source src="./assets/video/pexels-digital-map-of-latitude-and-longitude.mp4" type="video/mp4">
+  <video class="video-background" id="videoBackground" autoplay muted loop>
+    <source src="assets\video\pexels-futuristic-abstract-digital-flow-background.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <div class="video-overlay"></div>
 
   <!-- Print Button -->
-  <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+  <button class="print-btn" onclick="window.print()">
+    <svg width="46" height="46" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M6 4.8v3.6H4.8a2.4 2.4 0 0 0-2.4 2.4v3.6a2.4 2.4 0 0 0 2.4 2.4H6v2.4a2.4 2.4 0 0 0 2.4 2.4h7.2a2.4 2.4 0 0 0 2.4-2.4v-2.4h1.2a2.4 2.4 0 0 0 2.4-2.4v-3.6a2.4 2.4 0 0 0-2.4-2.4H18V4.8a2.4 2.4 0 0 0-2.4-2.4H8.4A2.4 2.4 0 0 0 6 4.8Zm9.6 0H8.4v3.6h7.2V4.8Zm0 9.6H8.4v4.8h7.2v-4.8Z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
 
   <div class="container">
     <div class="cv-card">
@@ -462,7 +37,11 @@
         <h1 class="name">NGUYỄN ANH KIỆT</h1>
         <div class="title">SOFTWARE ENGINEER</div>
         <div class="contact-line">(+84) 816 630 164 • kietna.work@gmail.com • Ho Chi Minh City, VN</div>
-        <div class="links">https://github.com/koniz-dev • https://www.linkedin.com/in/koniz-dev</div>
+        <div>
+          <a href="https://github.com/koniz-dev" target="_blank" class="links">https://github.com/koniz-dev</a> •
+          <a href="https://www.linkedin.com/in/koniz-dev" target="_blank"
+            class="links">https://www.linkedin.com/in/koniz-dev</a>
+        </div>
       </div>
 
       <div class="content">
@@ -471,9 +50,10 @@
           <h2 class="section-title">SUMMARY</h2>
           <div class="section-content">
             Full-Stack Software Engineer with 2 years of experience building scalable, user-focused web applications.
-            Proficient in both frontend and backend development with a strong emphasis on clean architecture,
-            performance, and maintainable code. Collaborative and product-driven, passionate about solving real-world
-            problems and contributing to impactful engineering teams.
+            Proficient in both frontend and
+            backend development with a strong emphasis on clean architecture, performance, and maintainable code.
+            Collaborative and productdriven, passionate about solving real-world problems and contributing to impactful
+            engineering teams.
           </div>
         </div>
 
@@ -546,41 +126,65 @@
         <div class="section">
           <h2 class="section-title">PROJECT</h2>
           <div class="project-title">E-Commerce Platform</div>
-          <div class="project-description">
-            Developed a full-stack e-commerce platform using Next.js 15, Tailwind CSS, Prisma, and MongoDB, structured
-            across two separate repositories:
-          </div>
           <ul class="project-features">
-            <li><strong>ecommerce-store:</strong> a customer-facing storefront enabling users to browse, filter (by
-              category, size, color), view details, add items to cart, and complete purchases.</li>
-            <li><strong>ecommerce-admin:</strong> a feature-rich admin dashboard supporting multi-store management,
-              with CRUD operations for products, orders, categories, sizes, colors, and billboards.</li>
+            <li>
+              Developed a full-stack e-commerce platform using Next.js 15, Tailwind CSS, Prisma, and MongoDB, structured
+              across two separate repositories:
+              <ul class="project-features">
+                <li><strong>ecommerce-store:</strong> a customer-facing storefront enabling users to browse, filter (by
+                  category, size, color), view details, add items to cart, and complete purchases.</li>
+                <li><strong>ecommerce-admin:</strong> a feature-rich admin dashboard supporting multi-store management,
+                  with CRUD operations for products, orders, categories, sizes, colors, and billboards.</li>
+              </ul>
+            </li>
             <li>Built robust API routes for internal testing and potential third-party integrations.</li>
             <li>Emphasized scalability, performance optimization, and a clean, modern user experience with the App
               Router architecture.</li>
-          </ul>
         </div>
 
-        <!-- Soft Skills -->
-        <div class="section">
-          <h2 class="section-title">SOFT SKILLS</h2>
-          <ul class="skills-list">
-            <li>Strong communication & collaboration in cross-functional teams</li>
-            <li>Fast learner with high adaptability in dynamic environments</li>
-            <li>Proven time management & problem-solving skills</li>
-          </ul>
-        </div>
+      </div>
 
-        <!-- Language -->
-        <div class="section">
-          <h2 class="section-title">LANGUAGE</h2>
-          <div class="section-content">
-            <strong>English:</strong> TOEIC Reading & Listening: 545 / Speaking & Writing: 240
-          </div>
+      <!-- Soft Skills -->
+      <div class="section">
+        <h2 class="section-title">SOFT SKILLS</h2>
+        <ul class="skills-list">
+          <li>Strong communication & collaboration in cross-functional teams</li>
+          <li>Fast learner with high adaptability in dynamic environments</li>
+          <li>Proven time management & problem-solving skills</li>
+        </ul>
+      </div>
+
+      <!-- Language -->
+      <div class="section">
+        <h2 class="section-title">LANGUAGE</h2>
+        <div class="section-content">
+          <strong>English:</strong> TOEIC Reading & Listening: 545 / Speaking & Writing: 240
         </div>
       </div>
     </div>
   </div>
+  </div>
+
+  <script>
+    // Video loading handling
+    const video = document.getElementById('videoBackground');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    // Hide loading overlay after video loads or after 3 seconds maximum
+    const hideLoading = () => {
+      loadingOverlay.classList.add('hide');
+      video.classList.add('loaded');
+    };
+
+    // Video loaded
+    video.addEventListener('loadeddata', hideLoading);
+
+    // Fallback - hide loading after 3 seconds regardless
+    setTimeout(hideLoading, 3000);
+
+    // If video fails to load, still hide loading
+    video.addEventListener('error', hideLoading);
+  </script>
 </body>
 
 </html>
