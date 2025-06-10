@@ -30,7 +30,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./     # Thư mục gốc chứa index.html, _config.yml, common/, video/
+          source: ./
           destination: ./_site
 
       - name: Upload artifact

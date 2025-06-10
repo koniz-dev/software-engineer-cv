@@ -1,97 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Anh Kiệt - Software Engineer</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Nguyễn Anh Kiệt</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Garamond', 'EB Garamond', 'Times New Roman', serif;
+      overflow-x: hidden;
+      line-height: 1.4;
+    }
+
+    /* Video Background */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CV Card */
+    .cv-card {
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 15px;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: white;
+    }
+
+    .title {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .contact-line {
+      font-size: 11px;
+      color: #ccc;
+      margin-bottom: 3px;
+    }
+
+    .links {
+      font-size: 11px;
+      color: #4CAF50;
+      text-decoration: underline;
+    }
+
+    /* Vertical Content Layout */
+    .content {
+      margin-top: 20px;
+    }
+
+    /* Section Styles */
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .section-content {
+      font-size: 11px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    /* Skills List */
+    .skills-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li {
+      font-size: 11px;
+      color: #e0e0e0;
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .skills-list li:before {
+      content: "•";
+      color: white;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Work Experience */
+    .work-item {
+      margin-bottom: 15px;
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
+
+    .company {
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .duration {
+      font-size: 11px;
+      color: #4CAF50;
+      font-style: italic;
+    }
+
+    .work-duties {
+      list-style: none;
+      padding: 0;
+    }
+
+    .work-duties li {
+      font-size: 11px;
+      color: #e0e0e0;
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .work-duties li:before {
+      content: "•";
+      color: white;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 8px;
+    }
+
+    .degree {
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .university {
+      font-size: 11px;
+      color: #e0e0e0;
+    }
+
+    /* Project */
+    .project-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 5px;
+    }
+
+    .project-description {
+      font-size: 11px;
+      color: #e0e0e0;
+      margin-bottom: 8px;
+    }
+
+    .project-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-features li {
+      font-size: 11px;
+      color: #e0e0e0;
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .project-features li:before {
+      content: "•";
+      color: white;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Print Button */
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .print-btn:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(76, 175, 80, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cv-card {
+        padding: 20px;
+      }
+
+      .print-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+
+      .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+
+      .video-background,
+      .video-overlay,
+      .print-btn {
+        display: none !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      @page {
+        size: A4;
+        margin: 0.5in !important;
+      }
+
+      body {
+        background: white !important;
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .cv-card {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid;
+      }
+
+      .header {
+        margin-bottom: 15px !important;
+        padding-bottom: 10px !important;
+        border-bottom: 1px solid #333 !important;
+      }
+
+      .name {
+        font-size: 18px !important;
+        color: black !important;
+        margin-bottom: 3px !important;
+      }
+
+      .title {
+        font-size: 12px !important;
+        color: #333 !important;
+        margin-bottom: 5px !important;
+      }
+
+      .contact-line {
+        font-size: 9px !important;
+        color: #333 !important;
+        margin-bottom: 2px !important;
+      }
+
+      .links {
+        font-size: 9px !important;
+        color: #333 !important;
+        text-decoration: none !important;
+      }
+
+      .content {
+        margin-top: 10px !important;
+      }
+
+      .section {
+        margin-bottom: 12px !important;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        font-size: 11px !important;
+        color: black !important;
+        margin-bottom: 5px !important;
+        font-weight: bold !important;
+      }
+
+      .section-content {
+        font-size: 9px !important;
+        color: #333 !important;
+        line-height: 1.2 !important;
+      }
+
+      .skills-list li {
+        font-size: 9px !important;
+        color: #333 !important;
+        margin-bottom: 3px !important;
+        line-height: 1.2 !important;
+      }
+
+      .work-item {
+        margin-bottom: 10px !important;
+        page-break-inside: avoid;
+      }
+
+      .work-header {
+        margin-bottom: 3px !important;
+      }
+
+      .company {
+        font-size: 10px !important;
+        color: black !important;
+        font-weight: bold !important;
+      }
+
+      .duration {
+        font-size: 9px !important;
+        color: #666 !important;
+      }
+
+      .work-duties li {
+        font-size: 9px !important;
+        color: #333 !important;
+        margin-bottom: 2px !important;
+        line-height: 1.2 !important;
+      }
+
+      .edu-item {
+        margin-bottom: 5px !important;
+      }
+
+      .degree {
+        font-size: 10px !important;
+        color: black !important;
+        font-weight: bold !important;
+      }
+
+      .university {
+        font-size: 9px !important;
+        color: #333 !important;
+      }
+
+      .project-title {
+        font-size: 10px !important;
+        color: black !important;
+        font-weight: bold !important;
+        margin-bottom: 3px !important;
+      }
+
+      .project-description {
+        font-size: 9px !important;
+        color: #333 !important;
+        margin-bottom: 5px !important;
+        line-height: 1.2 !important;
+      }
+
+      .project-features li {
+        font-size: 9px !important;
+        color: #333 !important;
+        margin-bottom: 2px !important;
+        line-height: 1.2 !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Nguyễn Anh Kiệt</h1>
-        <div>
-            <p>SOFTWARE ENGINEER</p>
-            <p>(+84) 816630164</p>
-            <p><a href="mailto:kietna.work@gmail.com">kietna.work@gmail.com</a></p>
-            <p>Ho Chi Minh City, VN</p>
-            <p><a href="https://github.com/NguyenAnhKietUIT">GitHub</a></p>
-            <p><a href="https://www.linkedin.com/in/kan-dev">LinkedIn</a></p>
+  <!-- Video Background -->
+  <video class="video-background" autoplay muted loop>
+    <source src="./assets/video/pexels-digital-map-of-latitude-and-longitude.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+
+  <!-- Print Button -->
+  <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+
+  <div class="container">
+    <div class="cv-card">
+      <!-- Header -->
+      <div class="header">
+        <h1 class="name">NGUYỄN ANH KIỆT</h1>
+        <div class="title">SOFTWARE ENGINEER</div>
+        <div class="contact-line">(+84) 816 630 164 • kietna.work@gmail.com • Ho Chi Minh City, VN</div>
+        <div class="links">https://github.com/koniz-dev • https://www.linkedin.com/in/koniz-dev</div>
+      </div>
+
+      <div class="content">
+        <!-- Summary -->
+        <div class="section">
+          <h2 class="section-title">SUMMARY</h2>
+          <div class="section-content">
+            Full-Stack Software Engineer with 2 years of experience building scalable, user-focused web applications.
+            Proficient in both frontend and backend development with a strong emphasis on clean architecture,
+            performance, and maintainable code. Collaborative and product-driven, passionate about solving real-world
+            problems and contributing to impactful engineering teams.
+          </div>
         </div>
-    </header>
-    <section>
-        <h2>SUMMARY</h2>
-        <p>I am a software engineer with two years of experience, specializing in building responsive, high-performance user interfaces using TypeScript and modern frameworks such as Vue, Nuxt, React, and Next. I focus on creating intuitive user experiences with clean, maintainable code and take pride in turning designs into smooth, pixel-perfect interfaces. Recently, I have been expanding into fullstack development, working with Node.js to build scalable APIs, manage backend logic, and interact with databases such as MongoDB and Firebase. I am passionate about bridging the gap between design and technology, continuously improving my skills, and contributing to collaborative, product-focused teams.</p>
-    </section>
-    <section>
-        <h2>WORK EXPERIENCE</h2>
-        <h3>mHealth Technologies JSC - Full-time</h3>
-        <p>Jan 2024 - Feb 2025</p>
-        <ul>
-            <li>Website Revamps: Participated in rebuilding company websites using the latest framework version, improving performance and user experience.</li>
-            <li>Feature Development: Led the design and implementation of new features for the Wellcare application, increasing traffic and creating more product-selling opportunities for the Marketing team.</li>
-            <li>Chatbot Optimization: Optimized memory usage for the chatbot application, significantly improving accuracy by enhancing contextual understanding from stored data.</li>
-            <li>Search & Content Management: Integrated Elasticsearch and Notion to manage displayed content across the application and website, enhancing search functionality and making information retrieval more efficient for users.</li>
-        </ul>
-        <h3>mHealth Technologies JSC - Internship</h3>
-        <p>Oct 2023 - Dec 2023</p>
-        <ul>
-            <li>UI/UX Enhancement: Improved the UX and UI of existing application features, enhancing user experience and engagement.</li>
-            <li>Payment Support Development: Developed payment support features for the customer care department, significantly increasing transaction processing speed and reducing error rates.</li>
-            <li>Product Development Leadership: Led the team in building and launching two new products - Knowledge Questions and Expert Verification - empowering users with proactive health management tools.</li>
-            <li>AI Integration: Integrated the LangChain framework to develop a robust chatbot application, enabling users to access health-related inquiries quickly.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>TECHNICAL SKILLS</h2>
-        <dl>
-            <dt>Languages</dt>
-            <dd>HTML5, CSS3, JavaScript (ES6+), TypeScript, Node.js, Python</dd>
-            <dt>Frameworks & Libraries</dt>
-            <dd>Vue.js (Vue 3, Nuxt.js), React.js (React 19 + Next 15), Express.js, NestJS, FastAPI</dd>
-            <dt>Styling</dt>
-            <dd>Tailwind CSS, Responsive Design, Cross-Browser Compatibility, CSS Grid & Flexbox</dd>
-            <dt>State Management</dt>
-            <dd>Pinia, Vuex, React Context API, Redux, Zustand</dd>
-            <dt>Performance & Optimization</dt>
-            <dd>Lazy Loading, Code Splitting, SSR, Image Optimization, Basic Web Performance Optimization</dd>
-            <dt>Testing & Debugging</dt>
-            <dd>Vitest, Cypress, Playwright, Chrome DevTools, Postman</dd>
-            <dt>Web Accessibility</dt>
-            <dd>Semantic HTML, ARIA Basics</dd>
-            <dt>Design Tools</dt>
-            <dd>Figma, Adobe Photoshop</dd>
-            <dt>Database Management</dt>
-            <dd>PostgreSQL, MySQL, MongoDB, Firebase Realtime Database, Redis</dd>
-            <dt>Authentication & Authorization</dt>
-            <dd>JWT, OAuth 2.0, Firebase Auth, Session-based Auth</dd>
-            <dt>Real-time & API</dt>
-            <dd>WebSocket, Socket.IO, Firebase Realtime, REST API, GraphQL</dd>
-            <dt>Search & Messaging</dt>
-            <dd>Elasticsearch, RabbitMQ</dd>
-        </dl>
-    </section>
-    <section>
-        <h2>SOFT SKILLS</h2>
-        <dl>
-            <dt>Personal Attributes</dt>
-            <dd>Self-management, Time management, Willingness to learn, Adaptability & continuous learning, Problem-solving</dd>
-            <dt>Team & Communication</dt>
-            <dd>Teamwork & collaboration, Communication skills, Empathy & user-centric mindset, Teamlead</dd>
-            <dt>Languages</dt>
-            <dd>English (TOEIC Reading & Listening: 545, Speaking & Writing: 240)</dd>
-        </dl>
-    </section>
-    <section>
-        <h2>EDUCATION</h2>
-        <p>2020 - Graduated 2024</p>
-        <p>University of Information Technology - VNUHCM</p>
-        <p>Major: Information System - GPA: 3.45/4</p>
-    </section>
-    <section>
-        <h2>REFERENCE</h2>
-        <p>Phong Nguyen - mHealth Technologies JSC/ CEO</p>
-        <p>Email: <a href="mailto:phongnguyen@wellcare.sw">phongnguyen@wellcare.sw</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/phong-wellcare/">Phong Nguyen</a></p>
-    </section>
+
+        <!-- Technical Skills -->
+        <div class="section">
+          <h2 class="section-title">TECHNICAL SKILLS</h2>
+          <ul class="skills-list">
+            <li><strong>Languages:</strong> JavaScript (ES6+), TypeScript, HTML5, CSS3, Python</li>
+            <li><strong>Frameworks / Libraries:</strong> Vue 3, Nuxt.js, React 19, Next.js 15, Express, NestJS,
+              FastAPI</li>
+            <li><strong>State Management:</strong> Pinia, Vuex, Redux, React Context API, Zustand</li>
+            <li><strong>Styling / UI:</strong> Tailwind CSS, Shadcn, Responsive Design, CSS Grid, Flexbox,
+              Cross-Browser Compatibility, ARIA Basics</li>
+            <li><strong>Testing:</strong> Vitest, Cypress, Playwright</li>
+            <li><strong>Backend / API:</strong> Node.js, REST, GraphQL, WebSocket, Socket.IO, Firebase Realtime,
+              Redis, RabbitMQ</li>
+            <li><strong>Database:</strong> PostgreSQL, MySQL, MongoDB, Firebase Realtime Database, Elasticsearch</li>
+            <li><strong>Authentication:</strong> JWT, OAuth2.0, Firebase Auth, Session-based Auth</li>
+            <li><strong>Dev Tools & Others:</strong> Figma, Adobe Photoshop, Chrome DevTools, Postman</li>
+          </ul>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="section">
+          <h2 class="section-title">WORK EXPERIENCE</h2>
+
+          <div class="work-item">
+            <div class="work-header">
+              <div class="company">mHealth Technologies JSC - Full-time</div>
+              <div class="duration">Jan 2024 - Feb 2025</div>
+            </div>
+            <ul class="work-duties">
+              <li>Rebuilt company websites with Nuxt 3, improving code maintainability and enabling faster feature
+                delivery.</li>
+              <li>Designed and launched new Wellcare features, increasing user engagement and product conversion.</li>
+              <li>Optimized chatbot memory for better context handling, improving response accuracy, and attracting
+                new business partners.</li>
+              <li>Integrated Elasticsearch + Notion CMS to streamline content management, reduce response time, and
+                improve user satisfaction.</li>
+            </ul>
+          </div>
+
+          <div class="work-item">
+            <div class="work-header">
+              <div class="company">mHealth Technologies JSC - Internship</div>
+              <div class="duration">Oct 2023 - Dec 2023</div>
+            </div>
+            <ul class="work-duties">
+              <li>Developed responsive design for complex chart components, improving usability across devices.</li>
+              <li>Resolved critical bugs and enhanced transaction metadata, stabilizing payment workflows for the
+                customer care team.</li>
+              <li>Implemented UI components for Knowledge Questions and Expert Verification features to enhance user
+                health tracking capabilities.</li>
+              <li>Integrated LangChain to build a health chatbot, enabling faster and more accurate medical queries.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+          <h2 class="section-title">EDUCATION</h2>
+          <div class="edu-item">
+            <div class="degree">B.E. in Information Systems – GPA: 3.45/4</div>
+            <div class="university">University of Information Technology – VNUHCM, 2020 – 2024</div>
+          </div>
+        </div>
+
+        <!-- Project -->
+        <div class="section">
+          <h2 class="section-title">PROJECT</h2>
+          <div class="project-title">E-Commerce Platform</div>
+          <div class="project-description">
+            Developed a full-stack e-commerce platform using Next.js 15, Tailwind CSS, Prisma, and MongoDB, structured
+            across two separate repositories:
+          </div>
+          <ul class="project-features">
+            <li><strong>ecommerce-store:</strong> a customer-facing storefront enabling users to browse, filter (by
+              category, size, color), view details, add items to cart, and complete purchases.</li>
+            <li><strong>ecommerce-admin:</strong> a feature-rich admin dashboard supporting multi-store management,
+              with CRUD operations for products, orders, categories, sizes, colors, and billboards.</li>
+            <li>Built robust API routes for internal testing and potential third-party integrations.</li>
+            <li>Emphasized scalability, performance optimization, and a clean, modern user experience with the App
+              Router architecture.</li>
+          </ul>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="section">
+          <h2 class="section-title">SOFT SKILLS</h2>
+          <ul class="skills-list">
+            <li>Strong communication & collaboration in cross-functional teams</li>
+            <li>Fast learner with high adaptability in dynamic environments</li>
+            <li>Proven time management & problem-solving skills</li>
+          </ul>
+        </div>
+
+        <!-- Language -->
+        <div class="section">
+          <h2 class="section-title">LANGUAGE</h2>
+          <div class="section-content">
+            <strong>English:</strong> TOEIC Reading & Listening: 545 / Speaking & Writing: 240
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
